@@ -40,7 +40,6 @@ const PapsEdit = ({ strategies, prexcs, commodities, commoditySystems, locations
             <div className="Subhead">
                 <h2 className="Subhead-heading">Edit PAP #{pap.id}</h2>
             </div>
-            {JSON.stringify(pap)}
 
             <form onSubmit={handleSubmit}>
                 <div className="Box Box--spacious p-3">
