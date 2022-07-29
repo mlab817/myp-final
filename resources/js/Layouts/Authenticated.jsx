@@ -37,7 +37,7 @@ const Authenticated = ({ auth, header, children }) => {
                     <div className="container">
                         {children}
                     </div>
-                </div>
+                </div>touch Procfile
                 <div className="Layout-sidebar height-full">
                     <nav className="menu border">
                         <Link className="menu-item" href={route('dashboard')} aria-current="page">
