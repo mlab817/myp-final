@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('indicators', function (Blueprint $table) {
+        Schema::create('prexc_subprograms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('label');
-            $table->foreignId('prexc_activity_id')
-                ->nullable()
+            $table->foreignId('prexc_program_id')
                 ->constrained()
                 ->cascadeOnDelete();
             $table->timestamps();
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indicators');
+        Schema::dropIfExists('prexc_subprograms');
     }
 };

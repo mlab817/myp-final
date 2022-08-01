@@ -15,19 +15,14 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::redirect('/', 'dashboard');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('paps', \App\Http\Controllers\PapController::class);
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('paps', \App\Http\Controllers\PapController::class);
+});
 
 require __DIR__.'/auth.php';

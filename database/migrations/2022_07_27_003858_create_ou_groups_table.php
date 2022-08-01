@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('operating_units', function (Blueprint $table) {
+        Schema::create('ou_groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('label');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operating_units');
+        Schema::dropIfExists('ou_groups');
     }
 };

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PapStoreRequest;
 use App\Models\Commodity;
 use App\Models\CommoditySystem;
 use App\Models\Indicator;
 use App\Models\Location;
 use App\Models\Pap;
 use App\Models\Prexc;
+use App\Models\PrexcActivity;
+use App\Models\PrexcProgram;
+use App\Models\PrexcSubprogram;
 use App\Models\Strategy;
 use App\Models\ValueChainSegment;
 use Illuminate\Http\Request;
@@ -24,7 +28,7 @@ class PapController extends Controller
     public function index()
     {
         return Inertia::render('Paps/Index', [
-            'paps' => Pap::with('prexc','commodity','user','commodity_system','location','value_chain_segment','indicator')->paginate()
+            'paps' => Pap::with('commodity','user','commodity_system','location','value_chain_segment','indicator')->paginate()
         ]);
     }
 
@@ -37,7 +41,9 @@ class PapController extends Controller
     {
         return Inertia::render('Paps/Create', [
             'strategies' => Strategy::all(),
-            'prexcs' => Prexc::all(),
+            'prexcPrograms' => PrexcProgram::all(),
+            'prexcSubprograms' => PrexcSubprogram::all(),
+            'prexcActivities' => PrexcActivity::all(),
             'commodities' => Commodity::all(),
             'commoditySystems' => CommoditySystem::all(),
             'locations' => Location::all(),
@@ -52,7 +58,7 @@ class PapController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PapStoreRequest $request)
     {
         $pap = Pap::create($request->except('other_vc_segments'));
 
@@ -84,7 +90,9 @@ class PapController extends Controller
         return Inertia::render('Paps/Edit', [
             'pap' => $pap,
             'strategies' => Strategy::all(),
-            'prexcs' => Prexc::all(),
+            'prexcPrograms' => PrexcProgram::all(),
+            'prexcSubprograms' => PrexcSubprogram::all(),
+            'prexcActivities' => PrexcActivity::all(),
             'commodities' => Commodity::all(),
             'commoditySystems' => CommoditySystem::all(),
             'locations' => Location::all(),

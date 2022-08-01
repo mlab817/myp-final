@@ -4,7 +4,7 @@ import {useState} from "react";
 
 const years = [2022,2023,2024,2025,2026,2027,2028,2029,2030]
 
-const PapsEdit = ({ strategies, prexcs, commodities, commoditySystems, locations, valueChainSegments, indicators }) => {
+const PapsEdit = ({ strategies, prexcPrograms, prexcSubprograms, prexcActivities, commodities, commoditySystems, locations, valueChainSegments, indicators }) => {
     const { pap } = usePage().props
 
     const { data, setData, put, processing, errors } = useForm(pap)
@@ -74,7 +74,7 @@ const PapsEdit = ({ strategies, prexcs, commodities, commoditySystems, locations
                         </div>
 
                         <div className="form-group-body">
-                            <textarea className="form-control input-block" value={data.brief_description} onChange={handleChange}/>
+                            <textarea style={{ resize: 'none' }} className="form-control input-block" value={data.brief_description} onChange={handleChange}/>
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@ const PapsEdit = ({ strategies, prexcs, commodities, commoditySystems, locations
                             <select className="form-select" value={data.prexc_id} onChange={handleChange} name="prexc_id">
                                 <option value="">Select PREXC</option>
                                 {
-                                    prexcs.map((option, index) => <option key={index} value={option.id}>{option.name}</option>)
+                                    prexcPrograms.map((option, index) => <option key={index} value={option.id}>{option.name}</option>)
                                 }
                             </select>
                         </div>

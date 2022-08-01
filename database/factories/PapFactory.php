@@ -26,7 +26,7 @@ class PapFactory extends Factory
         return [
             'pap' => $this->faker->sentence,
             'brief_description' => $this->faker->paragraph,
-            'prexc_id' => Prexc::where('level', 2)->inRandomOrder()->first()->id,
+//            'prexc_id' => Prexc::where('level', 2)->inRandomOrder()->first()->id,
             'commodity_id' => Commodity::all()->random()->id,
             'commodity_system_id' => CommoditySystem::all()->random()->id,
             'location_id' => Location::all()->random()->id,

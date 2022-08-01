@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('prexc_indicator', function (Blueprint $table) {
-            $table->foreignId('prexc_id')
+            $table->foreignId('prexc_activity_id')
                 ->constrained()
                 ->cascadeOnDelete();
             $table->foreignId('indicator_id')

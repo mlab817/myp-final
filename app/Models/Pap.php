@@ -21,8 +21,10 @@ class Pap extends Model
         'strategy_id',
         'pap',
         'brief_description',
-        'implementing_unit_id',
-        'prexc_id',
+        'operating_unit_id',
+        'prexc_program_id',
+        'prexc_subprogram_id',
+        'prexc_activity_id',
         'commodity_id',
         'commodity_system_id',
         'location_id',
@@ -49,16 +51,6 @@ class Pap extends Model
     public function strategy()
     {
         return $this->belongsTo(Strategy::class);
-    }
-
-    public function implementing_unit()
-    {
-        return $this->belongsTo(ImplementingUnit::class);
-    }
-
-    public function prexc()
-    {
-        return $this->belongsTo(Prexc::class);
     }
 
     public function commodity()

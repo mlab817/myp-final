@@ -8,7 +8,9 @@ const defaultFormFields ={
     strategy_id: '',
     pap: '',
     brief_description: '',
-    prexc_id: '',
+    prexc_program_id: '',
+    prexc_subprogram_id: '',
+    prexc_activity_id: '',
     commodity_id: '',
     commodity_system_id: '',
     location_id: '',
@@ -28,7 +30,7 @@ const defaultFormFields ={
     physical_target_2030: 0,
 }
 
-const PapsCreate = ({ strategies, prexcs, commodities, commoditySystems, locations, valueChainSegments, indicators }) => {
+const PapsCreate = ({ strategies, prexcPrograms, prexcSubprograms, prexcActivities, commodities, commoditySystems, locations, valueChainSegments, indicators }) => {
     const { data, setData, post, processing, errors } = useForm(defaultFormFields)
 
     const handleChange = ({ target: { name, value }}) => {
@@ -63,6 +65,8 @@ const PapsCreate = ({ strategies, prexcs, commodities, commoditySystems, locatio
                 <h2 className="Subhead-heading">Create a New PAP</h2>
             </div>
 
+            {JSON.stringify(errors)}
+
             <form onSubmit={handleSubmit}>
                 <div className="Box Box--spacious p-3">
                     <div className="form-group">
@@ -96,20 +100,50 @@ const PapsCreate = ({ strategies, prexcs, commodities, commoditySystems, locatio
                         </div>
 
                         <div className="form-group-body">
-                            <textarea className="form-control input-block" value={data.brief_description} onChange={handleChange}/>
+                            <textarea style={{ resize: 'none' }} name="brief_description" className="form-control input-block" value={data.brief_description} onChange={handleChange}/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div className="form-group-header">
-                            <label htmlFor="">PREXC</label>
+                            <label htmlFor="">PREXC Program</label>
                         </div>
 
                         <div className="form-group-body">
-                            <select className="form-select" value={data.prexc_id} onChange={handleChange} name="prexc_id">
-                                <option value="">Select PREXC</option>
+                            <select className="form-select" value={data.prexc_program_id} onChange={handleChange} name="prexc_program_id">
+                                <option value="">Select PREXC Program</option>
                                 {
-                                    prexcs.map((option, index) => <option key={index} value={option.id}>{option.name}</option>)
+                                    prexcPrograms.map((option, index) => <option key={index} value={option.id}>{option.name}</option>)
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <div className="form-group-header">
+                            <label htmlFor="">PREXC Subprogram</label>
+                        </div>
+
+                        <div className="form-group-body">
+                            <select className="form-select" value={data.prexc_subprogram_id} onChange={handleChange} name="prexc_subprogram_id">
+                                <option value="">Select PREXC Subprogram</option>
+                                {
+                                    prexcSubprograms.map((option, index) => <option key={index} value={option.id}>{option.name}</option>)
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <div className="form-group-header">
+                            <label htmlFor="">PREXC Activity</label>
+                        </div>
+
+                        <div className="form-group-body">
+                            <select className="form-select" value={data.prexc_activity_id} onChange={handleChange} name="prexc_activity_id">
+                                <option value="">Select PREXC Activity</option>
+                                {
+                                    prexcActivities.map((option, index) => <option key={index} value={option.id}>{option.name}</option>)
                                 }
                             </select>
                         </div>

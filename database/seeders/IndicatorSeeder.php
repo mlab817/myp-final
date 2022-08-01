@@ -487,10 +487,8 @@ class IndicatorSeeder extends Seeder
         foreach ($indicators as $key => $value) {
             $indicator = Indicator::create([
                 'name' => $key,
-                'label'=> $key,
+                'label' => $key,
             ]);
-
-            $indicator->prexcs()->sync($value);
         }
 
         Schema::enableForeignKeyConstraints();

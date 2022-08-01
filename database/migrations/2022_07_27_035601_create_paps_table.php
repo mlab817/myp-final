@@ -24,11 +24,19 @@ return new class extends Migration
                 ->nullable();
             $table->text('brief_description')
                 ->nullable();
-            $table->foreignId('implementing_unit_id')
+            $table->foreignId('operating_unit_id')
                 ->nullable()
                 ->constrained()
                 ->nullOnDelete();
-            $table->foreignId('prexc_id')
+            $table->foreignId('prexc_program_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+            $table->foreignId('prexc_subprogram_id')
+                ->nullable()
+                ->constrained()
+                ->nullOnDelete();
+            $table->foreignId('prexc_activity_id')
                 ->nullable()
                 ->constrained()
                 ->nullOnDelete();
@@ -55,15 +63,15 @@ return new class extends Migration
             $table->string('unit_of_measure')
                 ->nullable();
             $table->decimal('unit_cost', 20, 2)->default(0);
-            $table->decimal('physical_target_2022', 20, 4)->default(0);
-            $table->decimal('physical_target_2023', 20, 4)->default(0);
-            $table->decimal('physical_target_2024', 20, 4)->default(0);
-            $table->decimal('physical_target_2025', 20, 4)->default(0);
-            $table->decimal('physical_target_2026', 20, 4)->default(0);
-            $table->decimal('physical_target_2027', 20, 4)->default(0);
-            $table->decimal('physical_target_2028', 20, 4)->default(0);
-            $table->decimal('physical_target_2029', 20, 4)->default(0);
-            $table->decimal('physical_target_2030', 20, 4)->default(0);
+            $table->decimal('physical_target_2022', 20, 2)->default(0);
+            $table->decimal('physical_target_2023', 20, 2)->default(0);
+            $table->decimal('physical_target_2024', 20, 2)->default(0);
+            $table->decimal('physical_target_2025', 20, 2)->default(0);
+            $table->decimal('physical_target_2026', 20, 2)->default(0);
+            $table->decimal('physical_target_2027', 20, 2)->default(0);
+            $table->decimal('physical_target_2028', 20, 2)->default(0);
+            $table->decimal('physical_target_2029', 20, 2)->default(0);
+            $table->decimal('physical_target_2030', 20, 2)->default(0);
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained()
